@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+F:/all_sort/all_sort.h
+iostream
+-
+vector
+-
+
+F:/all_sort/main.cpp
+iostream
+-
+vector
+-
+all_sort.h
+F:/all_sort/all_sort.h
+
