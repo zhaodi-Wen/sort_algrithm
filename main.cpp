@@ -19,4 +19,18 @@ int main() {
         cout<<A[i]<<" ";
     cout<<endl;
 
+
+    linklist *p = new linklist(4);
+    p->next = new linklist(6);
+    p->next->next = new linklist(1);
+    p->next->next->next = new linklist(3);
+    p->next->next->next->next = new linklist(9);
+    p->next->next->next->next->next = new linklist(8);
+    p->next->next->next->next->next->next = new linklist(2);
+    B.Q_sort(p,NULL);
+    for (int j = 0; j <7 ; ++j) {
+        cout<<p->val<<" ";
+        p = p->next;
+    }
+
 }

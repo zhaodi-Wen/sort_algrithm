@@ -11,12 +11,19 @@
 #include <vector>
 using namespace std;
 template<typename T>
+
 void Swap(T&a,T&b){
     T temp;
     temp = a;
     a = b;
     b = temp;
 }
+struct linklist{
+    int val;
+    linklist *next;
+    linklist(int x):val(x),next(NULL){}
+};
+
 class all_sort{
 public:
     vector<int > array;
@@ -25,10 +32,13 @@ public:
     void bubble_sort(vector<int > &A);
     vector<int>select_sort();
     int partition(vector<int > &A,int left,int right);
+    linklist *partition(linklist *pBegin,linklist *pEnd);
     void Q_sort(vector<int> &A,int low, int high);
+    void Q_sort(linklist *pBegin,linklist *pEnd);
     void Insert_sort(vector<int> &A);
     void Heap_sort(vector<int> &A);
     int Heap_adjust(vector<int>&A,int s,int m);
+
 
 
 };
@@ -109,5 +119,27 @@ void all_sort::Heap_sort(vector<int> &A) {
     {
         Swap(A[0],A[i]);
         Heap_adjust(A,0,i-1);
+    }
+}
+
+linklist* all_sort::partition(linklist *pBegin, linklist *pEnd){
+    linklist *p = pBegin;
+    linklist *q = p->next;
+    int temp = pBegin->val;
+    while (q!=pEnd){
+        if(q->val<temp){
+            p = p->next;
+            swap(p->val,q->val);
+        }
+        q = q->next;
+    }
+    swap(p->val,pBegin->val);
+    return p;
+}
+void all_sort::Q_sort(linklist *pBegin, linklist *pEnd) {
+    if(pBegin!=pEnd) {
+        linklist *pivot = partition(pBegin, pEnd);
+        Q_sort(pBegin, pivot);
+        Q_sort(pivot->next, pEnd);
     }
 }
